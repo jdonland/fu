@@ -1,0 +1,37 @@
+\usepackage{amsthm}
+% \usepackage{amssymb}
+%\usepackage{mathabx}
+\usepackage{mathtools}
+\usepackage{nopageno}
+\usepackage{xpatch}
+\usepackage[shortlabels]{enumitem}
+\usepackage[scr]{rsfso}
+\usepackage{multicol}
+
+% margins
+\usepackage[margin=1.25in]{geometry}
+
+% problem environment with manual numbering
+\theoremstyle{definition}%
+\newtheorem{probinner}{}
+\newenvironment{prob}[1]{%
+  \renewcommand\theprobinner{#1}%
+  \probinner
+}{\endprobinner}
+
+% environments
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{notation}{Notation}
+
+% suppress dot after problem number
+\makeatletter
+\xpatchcmd{\@thm}{\thm@headpunct{.}}{\thm@headpunct{}}{}{}
+\makeatother
+
+% aliased commands
+\newcommand{\true}{\mathbf{true}}
+\newcommand{\false}{\mathbf{false}}
+\renewcommand{\iff}{\leftrightarrow}
+\newcommand{\CPL}{\mathsf{CPL}}
