@@ -10,7 +10,7 @@
 \maketitle
 
 \begin{definition}
-    A \emph{formula} of classical propositional logic (hereafter $\CPL$) is an \emph{atom} (denoted by $p, q, r, s$, etc.), a formula preceded by $\neg$; or two formulas separated by $\wedge$, $\vee$, $\to$, or $\iff$ and enclosed in parentheses. Nothing else is a formula. The set of all such formulas is denoted $\mathsf{Form}_\CPL$.
+    A \emph{formula} (of classical propositional logic, or $\CPL$) is an \emph{atom} (denoted by $p, q, r, s$, etc.), a formula preceded by $\neg$; or two formulas separated by $\wedge$, $\vee$, $\to$, or $\iff$ and enclosed in parentheses. Nothing else is a formula.
 \end{definition}
 
 \begin{notation}
@@ -18,7 +18,7 @@
 \end{notation}
 
 \begin{definition}
-    A \emph{valuation} is a function $v:\mathsf{Form}_\CPL \to \{ \true, \false \}$ such that for any formulas $A$ and $B$:
+    A \emph{valuation} is a function from formulas to the \emph{truth values} $\{ \true, \false \}$ such that for any formulas $A$ and $B$:
     \begin{align*}
         v(\neg A) & = \begin{dcases} \false \textrm{ if } v(A) = \true, \\ \true \textrm{ otherwise} \end{dcases} \\
         v(A \wedge B) & = \begin{dcases} \false \textrm{ if } v(A) = \false \textrm{ or } v(B) = \false \textrm{ (or both)}, \\ \true \textrm{ otherwise} \end{dcases} \\
@@ -29,11 +29,11 @@
 \end{definition}
 
 \begin{proposition}
-A valuation is uniquely determined by its action on atoms.
+A valuation is uniquely determined by its restriction to atoms.
 \end{proposition}
 
 \begin{definition}
-    A formula $A$ is a \emph{tautology} of $\CPL$ if $v(A) = \true$ for all valuations $v$, a \emph{contradiction} if $v(A) = \false$ for all valuations $v$, and a \emph{contingency} otherwise.
+    A formula $A$ is a \emph{tautology} if $v(A) = \true$ for all valuations $v$, a \emph{contradiction} if $v(A) = \false$ for all valuations $v$, and a \emph{contingency} otherwise.
 \end{definition}
 
 \begin{proposition}
@@ -59,7 +59,7 @@ To demonstrate that a formula $A$ is not a tautology (contradiction) it suffices
 \end{prob}
 
 \begin{definition}
-    Let $\Gamma = \{A_1, A_2, \dots A_n \}$ and $\Delta = \{B_1, B_2, \dots B_m \}$ be sets of formulas of $\CPL$. If there is no valuation $v$ such that $v(A_i) = \true$ for all $A_i \in \Gamma$, we write $\Gamma \models_\CPL$. If for all valuations $v$, there exists some $B_j \in \Delta$ such that $v(B_j) = \true$, we write $\models_\CPL \Delta$. Finally, if, for all valuations $v$ such that $v(A_i) = \true$ for all $A_i \in \Gamma$, there exists some $B_j \in \Delta$ such that $v(B_j) = \true$, we write $\Gamma \models_\CPL \Delta$. 
+    Let $\Gamma = \{A_1, A_2, \dots A_n \}$ and $\Delta = \{B_1, B_2, \dots B_m \}$ be sets of formulas. If there is no valuation $v$ such that $v(A_i) = \true$ for all $A_i \in \Gamma$, we write $\Gamma \models$. If for all valuations $v$, there exists some $B_j \in \Delta$ such that $v(B_j) = \true$, we write $\models \Delta$. Finally, if, for all valuations $v$ such that $v(A_i) = \true$ for all $A_i \in \Gamma$, there exists some $B_j \in \Delta$ such that $v(B_j) = \true$, we write $\Gamma \models \Delta$. 
 \end{definition}
 
 \begin{notation} 
@@ -70,21 +70,21 @@ To demonstrate that a formula $A$ is not a tautology (contradiction) it suffices
     Show that:
     \begin{multicols}{2}
     \begin{enumerate}[a)]
-    \item $\neg p \models_\CPL (q \to p) \to \neg q$
-    \item ${r \to p}, {q \to \neg p}, q \models_\CPL \neg r$
-    \item $(p \vee q) \vee r, \neg p, \neg q \models_\CPL r, s, t$
-    \item ${p \iff r}, {\neg q \iff \neg r} \models_\CPL {p \iff q}$
-    \item ${r \vee \neg s}, s, \neg t, {p \iff t} \models_\CPL {r \wedge \neg p}$
-    \item $p, q, r, s \models_\CPL {r \to s}, {p \wedge \neg p}$
-    \item ${\neg (p \wedge r)}, {s \to r}, {\neg p \to \neg s} \models_\CPL t, {\neg s}$
-    \item ${\neg (p \iff q)}, {\neg t \to p}, {r \vee q} \models_\CPL {\neg r \to (t \vee s)}$
-    \item ${\neg (p \wedge q)}, {\neg p \to r}, {\neg r \to q} \models_\CPL r$
+    \item $\neg p \models (q \to p) \to \neg q$
+    \item ${r \to p}, {q \to \neg p}, q \models \neg r$
+    \item $(p \vee q) \vee r, \neg p, \neg q \models r, s, t$
+    \item ${p \iff r}, {\neg q \iff \neg r} \models {p \iff q}$
+    \item ${r \vee \neg s}, s, \neg t, {p \iff t} \models {r \wedge \neg p}$
+    \item $p, q, r, s \models {r \to s}, {p \wedge \neg p}$
+    \item ${\neg (p \wedge r)}, {s \to r}, {\neg p \to \neg s} \models t, {\neg s}$
+    \item ${\neg (p \iff q)}, {\neg t \to p}, {r \vee q} \models {\neg r \to (t \vee s)}$
+    \item ${\neg (p \wedge q)}, {\neg p \to r}, {\neg r \to q} \models r$
     \end{enumerate}
     \end{multicols}
 \end{prob}
 
 \begin{definition}
-    Let $A$ and $B$ be formulas of $\CPL$. If $A \models_\CPL B$ and $B \models_\CPL A$, we say $A$ and $B$ are \emph{logically equivalent}.
+    Let $A$ and $B$ be formulas. If $A \models B$ and $B \models A$, we say $A$ and $B$ are \emph{logically equivalent}.
 \end{definition}
 
 \begin{prob}{2.3}
@@ -102,7 +102,7 @@ To demonstrate that a formula $A$ is not a tautology (contradiction) it suffices
 \end{prob}
 
 \begin{proposition}
-    Let $A$, $B$, and $C$ be formulas of $\CPL$. Then $(A \wedge B) \wedge C$ and $A \wedge (B \wedge C)$ are logically equivalent, and so are $(A \vee B) \vee C$ and $A \vee (B \vee C)$.
+    Let $A$, $B$, and $C$ be formulas. Then $(A \wedge B) \wedge C$ and $A \wedge (B \wedge C)$ are logically equivalent, and so are $(A \vee B) \vee C$ and $A \vee (B \vee C)$.
 \end{proposition}
 
 \begin{notation}
@@ -112,20 +112,20 @@ To demonstrate that a formula $A$ is not a tautology (contradiction) it suffices
 \begin{prob}{2.4}
     Show that:
     \begin{enumerate}[a)]
-    \item If $A$ and $B$ are logically equivalent, then $\models_\CPL A \iff B$.
-    \item If $\Gamma \models_\CPL \Delta$ then $\Gamma, A \models_\CPL \Delta$ and $\Gamma \models_\CPL \Delta, A$.
-    \item $A, \neg A \models_\CPL$ and $\models_\CPL A, \neg A$.
-    \item $A_1, A_2, \dots A_n \models_\CPL B_1, B_2, \dots B_m$ if and only if $A_1 \wedge A_2 \wedge \cdots \wedge A_n \models_\CPL B_1 \vee B_2 \vee \cdots \vee B_m$.
-    \item $\Gamma \models_\CPL \Delta, A \to B$ if and only if $\Gamma, A \models_\CPL \Delta, B$.
+    \item If $A$ and $B$ are logically equivalent, then $\models A \iff B$.
+    \item If $\Gamma \models \Delta$ then $\Gamma, A \models \Delta$ and $\Gamma \models \Delta, A$.
+    \item $A, \neg A \models$ and $\models A, \neg A$.
+    \item $A_1, A_2, \dots A_n \models B_1, B_2, \dots B_m$ if and only if $A_1 \wedge A_2 \wedge \cdots \wedge A_n \models B_1 \vee B_2 \vee \cdots \vee B_m$.
+    \item $\Gamma \models \Delta, A \to B$ if and only if $\Gamma, A \models \Delta, B$.
     \end{enumerate}
 \end{prob}
 
 \begin{prob}{2.5 (Bonus)}
     Prove that:
     \begin{enumerate}[a)]
-    \item If $A \models_\CPL B$, and $A$ and $B$ share no atoms in common, then $A$ is a contradiction or $B$ is a tautology. (Or both.)
-    \item For all $k \geq 1$, logical equivalence partitions the subset of $\mathsf{Form_{CPL}}$ in which all and only the atoms $p_1, p_2, \dots, p_k$ appear into $2^k$ classes.
-    \item Every formula of $\CPL$ is logically equivalent to a formula of the form $A_1 \wedge A_2 \wedge \cdots \wedge A_n$ where each $A_i$ is a formula of the form $B_1 \vee B_2 \vee \cdots \vee B_m$ and each $B_j$ is an atom or an atom preceded by $\neg$ (\emph{conjunctive normal form}), and likewise with $\wedge$ and $\vee$ swapped (\emph{disjunctive normal form}).
+    \item If $A \models B$, and $A$ and $B$ share no atoms in common, then $A$ is a contradiction or $B$ is a tautology. (Or both.)
+    \item For all $k \geq 1$, logical equivalence partitions the set of formulas in which exactly the atoms $p_1, p_2, \dots, p_k$ appear into $2^k$ classes.
+    \item Every formula is logically equivalent to a formula of the form $A_1 \wedge A_2 \wedge \cdots \wedge A_n$ where each $A_i$ is a formula of the form $B_1 \vee B_2 \vee \cdots \vee B_m$ and each $B_j$ is an atom or an atom preceded by $\neg$ (\emph{conjunctive normal form}), and likewise with $\wedge$ and $\vee$ swapped (\emph{disjunctive normal form}).
     \end{enumerate}
 \end{prob}
 
