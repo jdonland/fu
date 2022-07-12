@@ -106,7 +106,7 @@ To demonstrate that a formula $A$ is not a tautology (contradiction) it suffices
 \end{proposition}
 
 \begin{notation}
-    In light of the previous proposition, we write, e.g. $A_1 \wedge A_2 \wedge \cdots \wedge A_n$ to indicate $A_1, A_2, \dots A_n$ connected by $\wedge$ in any order, and likewise with $\vee$. 
+    In light of the previous proposition, we write, e.g., $A_1 \wedge A_2 \wedge \cdots \wedge A_n$ to indicate $A_1, A_2, \dots A_n$ connected by $\wedge$ in any order, and likewise with $\vee$. 
 \end{notation}
 
 \begin{prob}{2.4}
@@ -123,9 +123,9 @@ To demonstrate that a formula $A$ is not a tautology (contradiction) it suffices
 \begin{prob}{2.5 (Bonus)}
     Prove that:
     \begin{enumerate}[a)]
+    \item If $A \models_\CPL B$, and $A$ and $B$ share no atoms in common, then $A$ is a contradiction or $B$ is a tautology. (Or both.)
     \item For all $k \geq 1$, logical equivalence partitions the subset of $\mathsf{Form_{CPL}}$ in which all and only the atoms $p_1, p_2, \dots, p_k$ appear into $2^k$ classes.
-    \item Every formula of $\CPL$ is logically equivalent to a formula of the form $A_1 \wedge A_2 \wedge \cdots \wedge A_n$ where each $A_i$ is a formula of the form $B_1 \vee B_2 \vee \cdots \vee B_m$ and each $B_i$ is an atom or the negation of an atom.
-    \item Every formula of $\CPL$ is logically equivalent to a formula of the form $A_1 \vee A_2 \vee \cdots \vee A_n$ where each $A_i$ is a formula of the form $B_1 \wedge B_2 \wedge \cdots \wedge B_m$ and each $B_i$ is an atom or the negation of an atom.
+    \item Every formula of $\CPL$ is logically equivalent to a formula of the form $A_1 \wedge A_2 \wedge \cdots \wedge A_n$ where each $A_i$ is a formula of the form $B_1 \vee B_2 \vee \cdots \vee B_m$ and each $B_j$ is an atom or an atom preceded by $\neg$ (\emph{conjunctive normal form}), and likewise with $\wedge$ and $\vee$ swapped (\emph{disjunctive normal form}).
     \end{enumerate}
 \end{prob}
 

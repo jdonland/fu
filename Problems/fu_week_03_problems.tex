@@ -1,0 +1,56 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fu}
+
+\title{\emph{Forever Undecided} Reading Group \\ Week 3}
+\date{}
+\author{}
+\begin{document}
+
+\maketitle
+
+It can be determined whether a formula of $\CPL$ is a tautology, a contradiction, or a contingency by exhaustively testing every combination of truth values (i.e., $\true$ and $\false$) for all of the atoms which appear in it. It helps to do this by breaking the formula into its subformulas and keeping track of the results in a table. These tables are known as \emph{truth tables}.
+
+For example, the following truth table demonstrates that $((p \to q) \to p) \to p$ is a tautology:
+
+\begin{center}
+\begin{tabular}{c|c||c|c|c}
+    $p$ & $q$ & $p \to q$ & $(p \to q) \to p$ & $((p \to q) \to p) \to p$ \\
+    \hline
+    $\true$  & $\true$  & $\true$  & $\true$  & $\true$ \\
+    $\true$  & $\false$ & $\false$ & $\true$  & $\true$ \\
+    $\false$ & $\true$  & $\true$  & $\false$ & $\true$ \\
+    $\false$ & $\false$ & $\true$  & $\false$ & $\true$ \\
+\end{tabular}
+\end{center}
+
+Moreover, a truth table shows which combinations render a contingency true and which render it false. For example, this truth table shows that the contingency $\neg r \to (t \vee s)$ is logically equivalent to $r \vee t \vee s$:
+
+\begin{center}
+\begin{tabular}{c|c|c||c|c|c}
+    $r$ & $t$ & $s$ & $\neg r$ & $t \vee s$ & $\neg r \to (t \vee s)$ \\
+    \hline
+    $\true$  & $\true$  & $\true$  & $\false$ & $\true$  & $\true$  \\
+    $\true$  & $\true$  & $\false$ & $\false$ & $\true$  & $\true$  \\
+    $\true$  & $\false$ & $\true$  & $\false$ & $\true$  & $\true$  \\
+    $\true$  & $\false$ & $\false$ & $\false$ & $\false$ & $\true$  \\
+    $\false$ & $\true$  & $\true$  & $\true$  & $\true$  & $\true$  \\
+    $\false$ & $\true$  & $\false$ & $\true$  & $\true$  & $\true$  \\
+    $\false$ & $\false$ & $\true$  & $\true$  & $\true$  & $\true$  \\
+    $\false$ & $\false$ & $\false$ & $\true$  & $\false$ & $\false$ \\
+\end{tabular}
+\end{center}
+
+\begin{prob}{3.1}
+    Consider the formula $(p \wedge q \to \neg r) \wedge (q \to s)$.
+    \begin{enumerate}[a)]
+        \item Write its truth table.
+        \item Find a formula in conjunctive normal form and another in disjunctive normal form, each of which are logically equivalent to it.
+    \end{enumerate}
+\end{prob}
+
+Unfortunately, if a formula contains $k$ distinct atoms then there are $2^k$ possibilities to check. When $k$ is large, this may be impractical. For logics other than $\CPL$, e.g., those with infinitely many truth values rather than just two, this process may not be possible at all.
+
+\emph{Proof systems} provide an alternative to truth tables.
+
+\end{document}
