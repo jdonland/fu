@@ -51,6 +51,50 @@ Moreover, a truth table shows which combinations render a contingency true and w
 
 Unfortunately, if a formula contains $k$ distinct atoms then there are $2^k$ possibilities to check. When $k$ is large, this may be impractical. For logics other than $\CPL$, e.g., those with infinitely many truth values rather than just two, this process may not be possible at all.
 
-\emph{Proof systems} provide an alternative to truth tables.
+\begin{definition}
+    A \emph{sequent} (of the system \textbf{SYSTEM NAME HERE}) is an expression of the form $\Gamma \vdash \Delta$ where $\Gamma$ and $\Delta$ are (possibly empty) sets of formulas.
+\end{definition}
+
+\begin{notation} 
+    As before, we abbreviate $\Gamma \cup \Delta$ as $\Gamma, \Delta$; $\Gamma \cup \{ A \}$ as $\Gamma, A$; and $\{ A \} \cup \{ B \}$ as $A, B$.
+\end{notation}
+
+\begin{definition}
+    A sequent is \emph{derivable} if it is of the form $\Gamma, A \vdash \Delta, A$ or if it can obtained from derivable sequents according to the following \emph{rules}, where the horizontal bar indicates that the sequent below may be obtained from the sequent(s) above.
+\end{definition}
+
+\[ \arraycolsep = 2em \def\arraystretch{3}
+\begin{array}{c c c c c c c}
+\sequent{\Gamma, A}{\Delta}{\Gamma}{\Delta, \neg A} &
+\sequent{\Gamma, A, B}{\Delta}{\Gamma, A \wedge B}{\Delta} &
+\doublesequent{\Gamma, A}{\Delta}{\Gamma, B}{\Delta}{\Gamma, A \vee B}{\Delta} 
+\\
+\sequent{\Gamma}{\Delta, A}{\Gamma, \neg A}{\Delta} &
+\doublesequent{\Gamma}{\Delta, A}{\Gamma}{\Delta, B}{\Gamma}{\Delta, A \wedge B} &
+\sequent{\Gamma}{\Delta, A, B}{\Gamma}{\Delta, A \vee B}
+\\
+\doublesequent{\Gamma}{\Delta, A}{\Gamma, B}{\Delta}{\Gamma, A \to B}{\Delta} &
+\sequent{\Gamma}{\Delta, A \iff B}{\Gamma}{\Delta, A \to B} &
+\doublesequent{\Gamma, A \to B}{\Delta}{\Gamma, B \to A}{\Delta}{\Gamma, A \iff B}{\Delta}
+\\
+\sequent{\Gamma, A}{\Delta, B}{\Gamma}{\Delta, A \to B} &
+\sequent{\Gamma}{\Delta, A \iff B}{\Gamma}{\Delta, B \to A} &
+\doublesequent{\Gamma}{\Delta, A \to B}{\Gamma}{\Delta, B \to A}{\Gamma}{\Delta, A \iff B}
+\end{array}
+\]
+
+\[% \arraycolsep = 2em \def\arraystretch{3}
+%\begin{array}{c c}
+\sequent{\Gamma}{\Delta}{\Gamma, A}{\Delta} \hspace{8em}
+\sequent{\Gamma}{\Delta}{\Gamma}{\Delta, A}
+%\end{array}
+\]
+\begin{proposition}
+    Since the items on either side of a sequent are sets, we may interchange $\Gamma, A, A$ with $\Gamma, A$ and $\Gamma, A, B, \Delta$ with $\Gamma, B, A, \Delta$ whenever it is convenient.
+\end{proposition}
+
+\begin{proposition}
+    $\Gamma \models \Delta$ if and only if $\Gamma \vdash \Delta$ is derivable.
+\end{proposition}
 
 \end{document}

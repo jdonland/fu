@@ -1,5 +1,5 @@
 \usepackage{amsthm}
-% \usepackage{amssymb}
+\usepackage{amssymb}
 %\usepackage{mathabx}
 \usepackage{mathtools}
 \usepackage{nopageno}
@@ -35,3 +35,11 @@
 \newcommand{\false}{\mathbf{false}}
 \renewcommand{\iff}{\leftrightarrow}
 \newcommand{\CPL}{\mathsf{CPL}}
+\renewcommand{\models}{\vDash}
+
+\newcommand{\sequent}[4]{%
+    \displaystyle \frac{#1 \vdash #2}{#3 \vdash #4}
+}
+\newcommand{\doublesequent}[6]{%
+    \displaystyle \frac{#1 \vdash #2 \quad #3 \vdash #4}{#5 \vdash #6}
+}
