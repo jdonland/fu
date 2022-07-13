@@ -52,7 +52,7 @@ Moreover, a truth table shows which combinations render a contingency true and w
 Unfortunately, if a formula contains $k$ distinct atoms then there are $2^k$ possibilities to check. When $k$ is large, this may be impractical. For logics other than $\CPL$, e.g., those with infinitely many truth values rather than just two, this process may not be possible at all.
 
 \begin{definition}
-    A \emph{sequent} (of the system \textbf{SYSTEM NAME HERE}) is an expression of the form $\Gamma \vdash \Delta$ where $\Gamma$ and $\Delta$ are (possibly empty) sets of formulas.
+    A \emph{sequent} (for our purposes) is an expression of the form $\Gamma \rhd \Delta$ where $\Gamma$ and $\Delta$ are (possibly empty) sets of formulas.
 \end{definition}
 
 \begin{notation} 
@@ -60,7 +60,7 @@ Unfortunately, if a formula contains $k$ distinct atoms then there are $2^k$ pos
 \end{notation}
 
 \begin{definition}
-    A sequent is \emph{derivable} if it is of the form $\Gamma, A \vdash \Delta, A$ or if it can obtained from derivable sequents according to the following \emph{rules}, where the horizontal bar indicates that the sequent below may be obtained from the sequent(s) above.
+    A sequent is \emph{derivable} if it is of the form $\Gamma, A \rhd \Delta, A$ or if it can obtained from derivable sequents according to the following \emph{rules}, where the horizontal bar indicates that the sequent below may be obtained from the sequent(s) above.
 \end{definition}
 
 \[ \arraycolsep = 2em \def\arraystretch{3}
@@ -93,8 +93,12 @@ Unfortunately, if a formula contains $k$ distinct atoms then there are $2^k$ pos
     Since the items on either side of a sequent are sets, we may interchange $\Gamma, A, A$ with $\Gamma, A$ and $\Gamma, A, B, \Delta$ with $\Gamma, B, A, \Delta$ whenever it is convenient.
 \end{proposition}
 
+\begin{notation}
+    If $\Gamma \rhd \Delta$ is derivable, then we write $\Gamma \vdash \Delta$.
+\end{notation}
+
 \begin{proposition}
-    $\Gamma \models \Delta$ if and only if $\Gamma \vdash \Delta$ is derivable.
+    $\Gamma \models \Delta$ if and only if $\Gamma \vdash \Delta$.
 \end{proposition}
 
 \end{document}
