@@ -7,6 +7,7 @@
 \usepackage[shortlabels]{enumitem}
 \usepackage[scr]{rsfso}
 \usepackage{multicol}
+\usepackage{bussproofs}
 
 % margins
 \usepackage[margin=1.25in]{geometry}
@@ -37,9 +38,13 @@
 \newcommand{\CPL}{\mathsf{CPL}}
 \renewcommand{\models}{\vDash}
 
-\newcommand{\sequent}[4]{%
-    \displaystyle \frac{#1 \rhd #2}{#3 \rhd #4}
+\newcommand{\sequent}[2]{%
+    $#1 \triangleright #2$
 }
-\newcommand{\doublesequent}[6]{%
-    \displaystyle \frac{#1 \rhd #2 \quad #3 \rhd #4}{#5 \rhd #6}
+
+\newcommand{\sequentrule}[4]{%
+    \displaystyle \frac{#1 \triangleright #2}{#3 \triangleright #4}
+}
+\newcommand{\doublesequentrule}[6]{%
+    \displaystyle \frac{#1 \triangleright #2 \quad #3 \triangleright #4}{#5 \triangleright #6}
 }
