@@ -2,8 +2,6 @@
 \usepackage[utf8]{inputenc}
 \usepackage{fu}
 
-% to do: correct rules for equivalence
-
 \title{\emph{Forever Undecided} Reading Group \\ Week 3}
 \date{}
 \author{}
@@ -11,7 +9,7 @@
 
 \maketitle
 
-It can be determined whether a formula of $\CPL$ is a tautology, a contradiction, or a contingency by exhaustively testing every combination of $\true$ and $\false$ for all of the atoms which appear in it. It helps to do this by breaking the formula into its subformulas and keeping track of the results in a table. These tables are known as \emph{truth tables}.
+It can be determined whether a formula of $\CPL$ is a tautology, a contradiction, or a contingency by exhaustively testing every combination of $\true$ and $\false$ for all of the atoms which appear in it. It helps to do this by breaking the formula into its subformulas and keeping track of the results in a \emph{truth table}.
 
 For example, the following truth table demonstrates that $((p \to q) \to p) \to p$ is a tautology:
 
@@ -54,71 +52,19 @@ Moreover, a truth table shows which combinations render a contingency true and w
 Unfortunately, if a formula contains $k$ distinct atoms then there are $2^k$ possibilities to check. When $k$ is large, this may be impractical. For logics other than $\CPL$, e.g., those with infinitely many truth values rather than just two, this process may not be possible at all.
 
 \begin{definition}
-    A \emph{sequent} (for our purposes) is an expression of the form $\Gamma \triangleright \Delta$ where $\Gamma$ and $\Delta$ are (possibly empty) sets of formulas.
+    A \emph{proof} is 
 \end{definition}
-
-\begin{notation} 
-    As before, we abbreviate $\Gamma \cup \Delta$ as $\Gamma, \Delta$; $\Gamma \cup \{ A \}$ as $\Gamma, A$; and $\{ A \} \cup \{ B \}$ as $A, B$.
-\end{notation}
-
-\begin{definition}
-    A sequent is \emph{derivable} if it is of the form \sequent{A}{A} or if it can obtained from derivable sequents according to the following \emph{rules}, where the horizontal bar indicates that the sequent below may be obtained from the sequent(s) above.
-\end{definition}
-
-\[ \arraycolsep = 2em \def\arraystretch{3}
-\begin{array}{c c}
-% weakening
-\sequentrule{\Gamma}{\Delta}{\Gamma, A}{\Delta} &
-\sequentrule{\Gamma}{\Delta}{\Gamma}{\Delta, A} \\
-% negation
-\sequentrule{\Gamma, A}{\Delta}{\Gamma}{\Delta, \neg A} &
-\sequentrule{\Gamma}{\Delta, A}{\Gamma, \neg A}{\Delta} \\
-% conjunction
-\sequentrule{\Gamma, A, B}{\Delta}{\Gamma, A \wedge B}{\Delta} &
-\doublesequentrule{\Gamma}{\Delta, A}{\Gamma}{\Pi, B}{\Gamma}{\Delta, \Pi, A \wedge B} \\
-% disjunction
-\doublesequentrule{\Gamma, A}{\Delta}{\Gamma, B}{\Pi}{\Gamma, A \vee B}{\Delta, \Pi} & 
-\sequentrule{\Gamma}{\Delta, A, B}{\Gamma}{\Delta, A \vee B} \\
-% implication
-\doublesequentrule{\Gamma}{\Delta, A}{\Gamma, B}{\Pi}{\Gamma, A \to B}{\Delta, \Pi} &
-\sequentrule{\Gamma, A}{\Delta, B}{\Gamma}{\Delta, A \to B}
-\end{array}
-\]
-\vspace{-1em}
-\[ \arraycolsep = 2em \def\arraystretch{3}
-\begin{array}{c c c}
-\doublesequentrule{\Gamma, A}{\Delta, B}{\Pi, B}{\Theta, A}{\Gamma, \Pi}{\Delta, \Theta, A \iff B} &
-\doublesequentrule{\Gamma}{\Delta, A}{\Pi, B}{\Theta}{\Gamma, \Pi, A \iff B}{\Delta, \Theta} &
-\doublesequentrule{\Gamma}{\Delta, B}{\Pi, A}{\Theta}{\Gamma, \Pi, A \iff B}{\Delta, \Theta}
-\end{array}
-\]
-
-
-
-
-\begin{proposition}
-    Since the items on either side of a sequent are sets, we may interchange $\Gamma, A, A$ with $\Gamma, A$ and $\Gamma, A, B, \Delta$ with $\Gamma, B, A, \Delta$ whenever it is convenient.
-\end{proposition}
-
-Here is a derivation of \sequent{\neg p}{(q \to p) \to \neg q}:
-
-\begin{prooftree}
-    \AxiomC{\sequent{q}{q}}
-    \UnaryInfC{\sequent{q}{p, q}}
-    \UnaryInfC{\sequent{}{\neg q, p, q}}
-    \AxiomC{\sequent{p}{p}}
-    \UnaryInfC{\sequent{p}{\neg q, p}}
-    \BinaryInfC{\sequent{q \to p}{\neg q, p}}
-    \UnaryInfC{\sequent{\neg p, q \to p}{\neg q}}
-    \UnaryInfC{\sequent{\neg p}{(q \to p) \to \neg q}}
-\end{prooftree}
 
 \begin{notation}
-    If $\Gamma \triangleright \Delta$ is derivable, then we write $\Gamma \vdash \Delta$.
+    If there is a proof with premisses $\Gamma$ and conclusion $B$ then we write $\Gamma \vdash B$.
 \end{notation}
 
+\begin{prob}{3.2}
+For each of \textbf{2.2} a)--i), find a proof with all of the formulas on the left of the $\vDash$ as premisses and the formula on the right as its conclusion.
+\end{prob}
+
 \begin{proposition}
-    $\Gamma \models \Delta$ if and only if $\Gamma \vdash \Delta$.
+    $\Gamma \models B$ if and only if $\Gamma \vdash B$.
 \end{proposition}
 
 \end{document}

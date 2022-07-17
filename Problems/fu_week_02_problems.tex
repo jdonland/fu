@@ -32,6 +32,10 @@
 A valuation is uniquely determined by its restriction to atoms.
 \end{proposition}
 
+\begin{proposition}
+If $v(p) = w(p)$ for each atom $p$ appearing in a formula $A$, then $v(A) = w(A)$.
+\end{proposition}
+
 \begin{definition}
     A formula $A$ is a \emph{tautology} if $v(A) = \true$ for all valuations $v$, a \emph{contradiction} if $v(A) = \false$ for all valuations $v$, and a \emph{contingency} otherwise.
 \end{definition}
@@ -59,11 +63,11 @@ To demonstrate that a formula $A$ is not a tautology (contradiction) it suffices
 \end{prob}
 
 \begin{definition}
-    Let $\Gamma = \{A_1, A_2, \dots A_n \}$ and $\Delta = \{B_1, B_2, \dots B_m \}$ be sets of formulas. If there is no valuation $v$ such that $v(A_i) = \true$ for all $A_i \in \Gamma$, we write $\Gamma \models$. If for all valuations $v$, there exists some $B_j \in \Delta$ such that $v(B_j) = \true$, we write $\models \Delta$. Finally, if, for all valuations $v$ such that $v(A_i) = \true$ for all $A_i \in \Gamma$, there exists some $B_j \in \Delta$ such that $v(B_j) = \true$, we write $\Gamma \models \Delta$. 
+    Let $\Gamma = \{A_1, A_2, \dots A_n \}$ be a set of formulas and let $B$ be a formula. If there is no valuation $v$ such that $v(A_i) = \true$ for all $A_i \in \Gamma$, we write $\Gamma \models$. If $B$ is a tautology, we write $\models B$. Finally, if, for all valuations $v$ such that $v(A_i) = \true$ for all $A_i \in \Gamma$, $v(B) = \true$, we write $\Gamma \models B$. 
 \end{definition}
 
 \begin{notation} 
-    Let $\Gamma$ and $\Delta$ be sets of formulas and let $A$ and $B$ be formulas. We abbreviate $\Gamma \cup \Delta$ as $\Gamma, \Delta$; $\Gamma \cup \{ A \}$ as $\Gamma, A$; and $\{ A \} \cup \{ B \}$ as $A, B$.
+    We abbreviate $\Gamma \cup \{ A \}$ as $\Gamma, A$ and $\{ A \} \cup \{ B \}$ as $A, B$.
 \end{notation}
 
 \begin{prob}{2.2}
@@ -72,11 +76,11 @@ To demonstrate that a formula $A$ is not a tautology (contradiction) it suffices
     \begin{enumerate}[a)]
     \item $\neg p \models (q \to p) \to \neg q$
     \item ${r \to p}, {q \to \neg p}, q \models \neg r$
-    \item $(p \vee q) \vee r, \neg p, \neg q \models r, s, t$
+    \item $(p \vee q) \vee r, \neg p, \neg q \models (r \vee s) \vee t$
     \item ${p \iff r}, {\neg q \iff \neg r} \models {p \iff q}$
     \item ${r \vee \neg s}, s, \neg t, {p \iff t} \models {r \wedge \neg p}$
     \item $p, q, r, s \models {r \to s}, {p \wedge \neg p}$
-    \item ${\neg (p \wedge r)}, {s \to r}, {\neg p \to \neg s} \models t, {\neg s}$
+    \item ${\neg (p \wedge r)}, {s \to r}, {\neg p \to \neg s} \models t \vee {\neg s}$
     \item ${\neg (p \iff q)}, {\neg t \to p}, {r \vee q} \models {\neg r \to (t \vee s)}$
     \item ${\neg (p \wedge q)}, {\neg p \to r}, {\neg r \to q} \models r$
     \end{enumerate}
@@ -113,10 +117,10 @@ To demonstrate that a formula $A$ is not a tautology (contradiction) it suffices
     Show that:
     \begin{enumerate}[a)]
     \item If $A$ and $B$ are logically equivalent, then $\models A \iff B$.
-    \item If $\Gamma \models \Delta$ then $\Gamma, A \models \Delta$ and $\Gamma \models \Delta, A$.
-    \item $A, \neg A \models$ and $\models A, \neg A$.
-    \item $A_1, A_2, \dots A_n \models B_1, B_2, \dots B_m$ if and only if $A_1 \wedge A_2 \wedge \cdots \wedge A_n \models B_1 \vee B_2 \vee \cdots \vee B_m$.
-    \item $\Gamma \models \Delta, A \to B$ if and only if $\Gamma, A \models \Delta, B$.
+    \item If $\Gamma \models B$ then $\Gamma, A \models B$.
+    \item $A \wedge \neg A \models$ and $\models A \vee \neg A$.
+    \item $A_1, A_2, \dots A_n \models B$ if and only if $A_1 \wedge A_2 \wedge \cdots \wedge A_n \models B$.
+    \item $\Gamma \models A \to B$ if and only if $\Gamma, A \models B$.
     \end{enumerate}
 \end{prob}
 
@@ -125,7 +129,7 @@ To demonstrate that a formula $A$ is not a tautology (contradiction) it suffices
     \begin{enumerate}[a)]
     \item If $A \models B$, and $A$ and $B$ share no atoms in common, then $A$ is a contradiction or $B$ is a tautology. (Or both.)
     \item For all $k \geq 1$, logical equivalence partitions the set of formulas in which exactly the atoms $p_1, p_2, \dots, p_k$ appear into $2^k$ classes.
-    \item Every formula is logically equivalent to a formula of the form $A_1 \wedge A_2 \wedge \cdots \wedge A_n$ where each $A_i$ is a formula of the form $B_1 \vee B_2 \vee \cdots \vee B_m$ and each $B_j$ is an atom or an atom preceded by $\neg$ (\emph{conjunctive normal form}), and likewise with $\wedge$ and $\vee$ swapped (\emph{disjunctive normal form}).
+    \item Every formula is logically equivalent to a formula of the form $A_1 \vee A_2 \vee \cdots \vee A_n$ where each $A_i$ is a formula of the form $B_1 \wedge B_2 \wedge \cdots \wedge B_m$ and each $B_j$ is an atom or an atom preceded by $\neg$ (\emph{disjunctive normal form}), and likewise with $\vee$ and $\wedge$ swapped (\emph{conjunctive normal form}).
     \end{enumerate}
 \end{prob}
 
