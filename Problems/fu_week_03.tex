@@ -2,7 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{fu}
 
-\title{\emph{Forever Undecided} Reading Group \\ Week 3}
+\title{\textit{Forever Undecided} Reading Group \\ Week 3}
 \date{}
 \author{}
 \begin{document}
@@ -14,11 +14,11 @@
 \subsection*{Formulas, Subformulas, and Valuations}
 
 \begin{definition}
-    A \emph{formula} (of classical propositional logic, or $\CPL$) is an \emph{atom} (denoted by $p, q, r, s$, etc.), a formula preceded by $\neg$; or two formulas separated by $\wedge$, $\vee$, $\to$, or $\iff$ and enclosed in parentheses. Nothing else is a formula. 
+    A \textit{formula} (of classical propositional logic, or $\CPL$) is an \textit{atom} (denoted by $p, q, r, s$, etc.), a formula preceded by $\neg$; or two formulas separated by $\wedge$, $\vee$, $\to$, or $\iff$ and enclosed in parentheses. Nothing else is a formula. 
 \end{definition}
 
 \begin{definition}    
-    The symbols $\neg$, $\wedge$, $\vee$, $\to$, and $\iff$ are called \emph{connectives}. A formula containing no connectives is \emph{atomic}.
+    The symbols $\neg$, $\wedge$, $\vee$, $\to$, and $\iff$ are \textit{connectives}. They are called \textit{negation}, \textit{conjunction}, \textit{disjunction}, \textit{material implication}, and \textit{material equivalence}, respectively. A formula containing no connectives is \textit{atomic}.
 \end{definition}
 
 \begin{notation}
@@ -26,7 +26,7 @@
 \end{notation}
 
 \begin{definition}
-    If a formula $A$ is atomic, then the only \emph{subformula} of $A$ is $A$ itself. The subformulas of $\neg A$ are $\neg A$ together with all the subformulas of $A$. The subformulas of $A \wedge B$, $A \vee B$, etc., are the formula itself together with all the subformulas of $A$ and $B$.
+    If a formula $A$ is atomic, then the only \textit{subformula} of $A$ is $A$ itself. The subformulas of $\neg A$ are $\neg A$ together with all the subformulas of $A$. The subformulas of $A \wedge B$, $A \vee B$, etc., are the formula itself together with all the subformulas of $A$ and $B$. The atomic subformulas of a formula are its \textit{vocabulary}.
 \end{definition}
 
 \begin{prob}{3.1}
@@ -35,7 +35,7 @@ List all of the subformulas of each formula:
     \begin{enumerate}[a)]
         \item $p$
         \item $p \wedge \neg q$
-        \item
+        \item $(r \vee s) \wedge t$
         \item $(q \wedge (\neg r \to s)) \iff (s \to (q \vee t))$
         \item
         \item
@@ -44,7 +44,7 @@ List all of the subformulas of each formula:
 \end{prob}
 
 \begin{definition}
-    A \emph{valuation} is a function from formulas to the \emph{truth values} $\{ \true, \false \}$ such that for any formulas $A$ and $B$:
+    A \textit{valuation} is a function from formulas to the \textit{truth values} $\{ \true, \false \}$ such that for any formulas $A$ and $B$:
     \begin{align*}
         v(\neg A) & = \begin{dcases} \false \textrm{ if } v(A) = \true, \\ \true \textrm{ otherwise} \end{dcases} \\
         v(A \wedge B) & = \begin{dcases} \false \textrm{ if } v(A) = \false \textrm{ or } v(B) = \false \textrm{ (or both)}, \\ \true \textrm{ otherwise} \end{dcases} \\
@@ -55,13 +55,13 @@ List all of the subformulas of each formula:
 \end{definition}
 
 \begin{proposition}
-A valuation is uniquely determined by its restriction to atoms, and if $v$ and $w$ are valuations and $v(p) = w(p)$ for each atom $p$ appearing in a formula $A$, then $v(A) = w(A)$. Therefore, $v(A)$ depends only on $v(p_1), v(p_2), \dots, v(p_n)$.
+If $v$ and $w$ are valuations and $v(p) = w(p)$ for each atom $p$ in the vocabulary of $A$, then $v(A) = w(A)$.
 \end{proposition}
 
 \section*{Tautologies, Contradictions, and Contingencies}
 
 \begin{definition}
-    A formula $A$ is a \emph{tautology} if $v(A) = \true$ for all valuations $v$, a \emph{contradiction} if $v(A) = \false$ for all valuations $v$, and a \emph{contingency} otherwise.
+    A formula $A$ is a \textit{tautology} if $v(A) = \true$ for all valuations $v$, a \textit{contradiction} if $v(A) = \false$ for all valuations $v$, and a \textit{contingency} otherwise.
 \end{definition}
 
 \begin{proposition}
@@ -70,7 +70,7 @@ A formula $A$ is a tautology (contradiction) if and only if $\neg A$ is a contra
 
 \section*{Truth Tables}
 
-It can be determined whether a formula is a tautology, a contradiction, or a contingency by exhaustively testing every combination of $\true$ and $\false$ for all of the atoms which appear in it. It helps to do this by breaking the formula into its subformulas and keeping track of the results in a \emph{truth table}.
+It can be determined whether a formula is a tautology, a contradiction, or a contingency by exhaustively testing every combination of $\true$ and $\false$ for all of the atoms in its vocabulary. It helps to do this by breaking the formula into its subformulas and keeping track of the results in a \textit{truth table}.
 
 For example, the following truth table demonstrates that $((p \to q) \to p) \to p$ is a tautology:
 
@@ -85,7 +85,7 @@ For example, the following truth table demonstrates that $((p \to q) \to p) \to 
 \end{tabular}
 \end{center}
 
-Moreover, a truth table shows which combinations render a contingency true and which render it false. For example, this truth table shows that the contingency $\neg r \to (t \vee s)$ is \textbf{true} for all valuations according to which at least one of $r$, $t$, or $s$ is \textbf{true}:
+Moreover, a truth table shows which combinations render a contingency true and which render it false. For example, this truth table shows that the contingency $\neg r \to (t \vee s)$ is \textbf{true} for all valuations on which at least one of $r$, $t$, or $s$ is \textbf{true}:
 
 \begin{center}
 \begin{tabular}{c|c|c||c|c|c}
@@ -103,7 +103,7 @@ Moreover, a truth table shows which combinations render a contingency true and w
 \end{center}
 
 \begin{prob}{3.2}
-    Determine whether each of the following formulas is a tautology, a contradiction, or a contingency.
+    Classify each of the following formulas as a tautology, contradiction, or contingency:
     \begin{multicols}{2}
     \begin{enumerate}[a)]
     \item $(p \iff r) \wedge (\neg q \to \neg r)$
@@ -111,6 +111,8 @@ Moreover, a truth table shows which combinations render a contingency true and w
     \item $p \wedge \neg p$
     \item $((p \to q) \to p) \to p$
     \item $(p \iff (\neg p \vee \neg q)) \to p$
+    \item $q$
+    \item $(r \to s) \vee (s \to r)$
     \item $(p \to q) \wedge (p \wedge \neg q)$
     \end{enumerate}
     \end{multicols}
