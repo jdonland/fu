@@ -1,5 +1,7 @@
 # Forever Undecided Reading Group
 
+This is work in progress for an online reading group based on the book _Forever Undecided_ by Raymond Smullyan.
+
 ## Forever Undecided
 
 ## Reading Group
