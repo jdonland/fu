@@ -1,0 +1,89 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fu}
+
+\title{\emph{Forever Undecided} Reading Group \\ Week 4}
+\date{}
+\author{}
+\begin{document}
+
+\maketitle
+
+\section*{Classical Propositional Logic (Cont.)}
+
+\subsection*{Semantic Entailment and Logical Equivalence}
+
+\begin{definition}
+    Let $\Gamma = \{A_1, A_2, \dots A_n \}$ be a set of formulas and let $B$ be a formula. If there is no valuation $v$ such that $v(A_i) = \true$ for all $A_i \in \Gamma$, we say $\Gamma$ is \emph{unsatisfiable} and write $\Gamma \models$. (Otherwise, $\Gamma$ is \emph{satisfiable}.) If $B$ is a tautology, we write $\models B$. Finally, if, for all valuations $v$ such that $v(A_i) = \true$ for all $A_i \in \Gamma$, $v(B) = \true$, we write $\Gamma \models B$. 
+\end{definition}
+
+\begin{notation} 
+    We abbreviate $\{ A \}$ as $A$ and $\Gamma \cup \{ A \}$ as $\Gamma, A$.
+\end{notation}
+
+\begin{prob}{4.1}
+    Show that:
+    \begin{multicols}{2}
+    \begin{enumerate}[a)]
+    \item $\neg p \models (q \to p) \to \neg q$
+    \item ${r \to p}, {q \to \neg p}, q \models \neg r$
+    \item $(p \vee q) \vee r, \neg p, \neg q \models (r \vee s) \vee t$
+    \item ${p \iff r}, {\neg q \iff \neg r} \models {p \iff q}$
+    \item ${r \vee \neg s}, s, \neg t, {p \iff t} \models {r \wedge \neg p}$
+    \item $p, q, r, s \models {r \to s}, {p \wedge \neg p}$
+    \item ${\neg (p \wedge r)}, {s \to r}, {\neg p \to \neg s} \models t \vee {\neg s}$
+    \item ${\neg (p \iff q)}, {\neg t \to p}, {r \vee q} \models {\neg r \to (t \vee s)}$
+    \item ${\neg (p \wedge q)}, {\neg p \to r}, {\neg r \to q} \models r$
+    \end{enumerate}
+    \end{multicols}
+\end{prob}
+
+\begin{definition}
+    Let $A$ and $B$ be formulas. If $A \models B$ and $B \models A$, we say $A$ and $B$ are \emph{logically equivalent}.
+\end{definition}
+
+\begin{prob}{4.2}
+    Show that each pair of formulas is logically equivalent:
+    \begin{multicols}{2}
+    \begin{enumerate}[a)]
+    \item $p$ and $\neg \neg p$
+    \item $\neg (p \wedge q)$ and $\neg p \vee \neg q$
+    \item $\neg (p \vee q)$ and $\neg p \wedge \neg q$
+    \item $(p \to q) \wedge (q \to p)$ and $p \iff q$
+    \item $p \to q$ and $\neg p \vee q$
+    \item $p \to q$ and $\neg q \to \neg p$
+    \end{enumerate}
+    \end{multicols}
+\end{prob}
+
+\begin{proposition}
+    Let $A$, $B$, and $C$ be formulas. Then $(A \wedge B) \wedge C$ and $A \wedge (B \wedge C)$ are logically equivalent, and so are $(A \vee B) \vee C$ and $A \vee (B \vee C)$.
+\end{proposition}
+
+\begin{notation}
+    In light of the previous proposition, we write, e.g., $A_1 \wedge A_2 \wedge \cdots \wedge A_n$ to indicate $A_1, A_2, \dots A_n$ connected by $\wedge$ in any order, and likewise with $\vee$. 
+\end{notation}
+
+\begin{prob}{4.3}
+    Show that:
+    \begin{enumerate}[a)]
+    \item If $A$ and $B$ are logically equivalent, then $\models A \iff B$.
+    \item If $\Gamma \models B$ then $\Gamma, A \models B$.
+    \item $A \wedge \neg A \models$ and $\models A \vee \neg A$.
+    \item $A_1, A_2, \dots A_n \models B$ if and only if $A_1 \wedge A_2 \wedge \cdots \wedge A_n \models B$.
+    \item $\Gamma \models B$ if and only if $\Gamma, \neg B \models$.
+    \item $\Gamma \models A \to B$ if and only if $\Gamma, A \models B$.
+    \end{enumerate}
+\end{prob}
+
+\begin{prob}{4.4 (Bonus)}
+    Prove that:
+    \begin{enumerate}[a)]
+    \item If $A \models B$, and $A$ and $B$ share no atomic subformulas in common, then $A$ is a contradiction or $B$ is a tautology. (Or both.)
+    \item For all $k \geq 1$, logical equivalence partitions the set of formulas in which exactly the atoms $p_1, p_2, \dots, p_k$ appear into $2^k$ classes.
+    \item Every formula is logically equivalent to a formula of the form $A_1 \vee A_2 \vee \cdots \vee A_n$ where each $A_i$ is a formula of the form $B_1 \wedge B_2 \wedge \cdots \wedge B_m$ and each $B_j$ is an atom or an atom preceded by $\neg$ (\emph{disjunctive normal form}), and likewise with $\vee$ and $\wedge$ swapped (\emph{conjunctive normal form}).
+    \item If $A$ is logically equivalent to $B$, then the formula $C\left[^{A} / _{B} \right]$ obtained by replacing every occurrence of a subformula $A$ of $C$ with $B$ is logically equivalent to $C$.
+    \end{enumerate}
+\end{prob}
+
+\end{document}
