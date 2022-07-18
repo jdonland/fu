@@ -81,9 +81,10 @@
 \begin{prob}{4.4 (Bonus)}
     Prove that:
     \begin{enumerate}[a)]
-    \item If $A \models B$, and $A$ and $B$ share no atomic subformulas in common, then $A$ is a contradiction or $B$ is a tautology. (Or both.)
+    \item If $A \models B$, and $A$ and $B$ share no vocabulary, then $A$ is a contradiction or $B$ is a tautology. (Or both.)
     \item Every formula is logically equivalent to a formula of the form $A_1 \vee A_2 \vee \cdots \vee A_n$ where each $A_i$ is a formula of the form $B_1 \wedge B_2 \wedge \cdots \wedge B_m$ and each $B_j$ is an atom or an atom preceded by $\neg$ (\emph{disjunctive normal form}), and likewise with $\vee$ and $\wedge$ swapped (\emph{conjunctive normal form}).
     \item If $A$ is logically equivalent to $B$, then the formula $C\left[^{A} / _{B} \right]$ obtained by replacing every occurrence of a subformula $A$ of $C$ with $B$ is logically equivalent to $C$.
+    \item If a new connective $|$ (called \textit{alternative denial}) is defined such that $v(A\,|\,B) = \mathbf{false}$ when $v(A) = \mathbf{true}$ and $v(B) = \mathbf{true}$ and \textbf{true} otherwise, then every formula is logically equivalent to a formula in which no connective other than $|$ appears, and likewise for a connective $\downarrow$ (\textit{joint denial}) defined such that $v(A \downarrow B) = \mathbf{false}$ when either $v(A) = \mathbf{true}$ or $v(B) = \mathbf{true}$ (or both) and \textbf{true} otherwise.
     \end{enumerate}
 \end{prob}
 
