@@ -11,7 +11,27 @@
 
 \subsection*{A Proof System for Classical Propositional Logic}
 
-(Discussion of proof system for classical logic, soundness, completeness.)
+If the combined vocabulary of $\Gamma$ and $A$ contains $k$ atoms, determining whether or not $\Gamma \models A$ by filling out a truth table requires checking $2^k$ possible valuations. This is infeasible when $k$ is large. For logics other than $\CPL$, e.g., those with infinitely many truth values instead of only two, this brute force strategy may not be possible at all.
+
+A \textit{proof system} provides an alternative. There are several kinds of proof systems; some are more useful for determining what follows from what \textit{within} the logic of interest while others are better for proving facts \textit{about} that logic. We will use \textit{natural deduction}, which is well-suited to the former task.
+
+\begin{definition}
+    Let $\Gamma$ be a set of formulas and $A$ be a formula. 
+    \begin{itemize}
+        \item If $A \in \Gamma$, then $\Gamma \proves A$.
+        \item If $\Gamma, A \proves B$ and $\Delta, A \proves \neg B$, then $\Gamma, \Delta \proves \neg A$. 
+        \item If $\Gamma \proves \neg \neg A$, then $\Gamma \proves A$.
+        \item If $\Gamma \proves A$ and $\Delta \proves B$ then $\Gamma, \Delta \proves A \wedge B$. 
+        \item If $\Gamma \proves A \wedge B$ then $\Gamma \proves A$ and $\Gamma \proves B$.
+        \item If $\Gamma \proves A$ or $\Gamma \proves B$, then $\Gamma \proves A \vee B$. 
+        \item If $\Gamma \proves A \vee B$, $\Delta, A \proves C$, and $\Sigma, B \proves C$, then $\Gamma, \Delta, \Sigma \proves C$.
+        \item If $\Gamma, A \proves B$, then $\Gamma \proves A \to B$. \item If $\Gamma \proves A \to B$ and $\Delta \proves A$, then $\Gamma, \Delta \proves B$.
+        \item If $\Gamma \proves A \iff B$, then $\Gamma \proves A \to B$. 
+        \item If $\Gamma \proves A \to B$ and $\Gamma \proves B \to A$, then $\Gamma \proves A \iff B$.
+    \end{itemize}
+\end{definition}
+
+Each item in the definition of $\proves$ above is a \textit{rule}. The name of each rule is given in parentheses.
 
 \subsection*{Solving Liar Puzzles}
 
