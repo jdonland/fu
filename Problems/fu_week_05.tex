@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage{fu}
+\usepackage{fitch}
 
 \title{\emph{Forever Undecided} Reading Group \\ Week 5}
 \date{}
@@ -9,32 +10,86 @@
 
 \maketitle
 
+\section*{Classical Propositional Logic (Cont.)}
+
 \subsection*{A Proof System for Classical Propositional Logic}
 
 If the combined vocabulary of $\Gamma$ and $A$ contains $k$ atoms, determining whether or not $\Gamma \models A$ by filling out a truth table requires checking $2^k$ possible valuations. This is infeasible when $k$ is large. For logics other than $\CPL$, e.g., those with infinitely many truth values instead of only two, this brute force strategy may not be possible at all.
 
-A \textit{proof system} provides an alternative. There are several kinds of proof systems; some are more useful for determining what follows from what \textit{within} the logic of interest while others are better for proving facts \textit{about} that logic. Ours is well-suited to the former task.
+A \textit{proof system} provides an alternative. There are several kinds of proof systems; some are more useful for determining what follows from what \textit{within} the logic of interest while others are better for proving facts \textit{about} that logic. Ours will be best suited to the former task.
 
+\subsection*{$\bot$}
+
+First, it will be convenient to add one new symbol to the language of  $\CPL$. 
 \begin{definition}
-    Let $\Gamma$ be a set of formulas (called \textit{premises}) and $A$ (called the \textit{conclusion}) be a formula. Then $\Gamma \proves A$ if there is a finite sequence of formulas ending with $A$, each obtained from previously appearing formulas in the sequence according to the following \textit{rules}:
-    \begin{center}
-    \begin{tabular}{l r}
-        If A $\in \Gamma$, then  $\Gamma \proves A$. & (premiss) \\
-        If $\Gamma$, $A \proves B$ and $\Delta, A \proves \neg B$, then  $\Gamma, \Delta \proves \neg A$. & ($\neg$ I) \\
-        If $\Gamma \proves \neg \neg A$ then $\Gamma \proves A$. & (DNE) \\
-        If $\Gamma \proves A$ and $\Delta \proves B$ then $\Gamma, \Delta \proves A \wedge B$. & ($\wedge$ I) \\
-        If $\Gamma \proves A \wedge B$ then $\Gamma \proves A$ and $\Gamma \proves B$. & ($\wedge$ E) \\
-        If $\Gamma \proves A$ or $\Gamma \proves B$, then $\Gamma \proves A \vee B$. & ($\vee$ I) \\
-        If $\Gamma \proves A \vee B$, $\Delta, A \proves C$, and $\Sigma, B \proves C$, then $\Gamma, \Delta, \Sigma \proves C$. & ($\vee$ I) \\
-        If $\Gamma, A \proves B$, then $\Gamma \proves A \to B$. & ($\to$ I) \\
-        If $\Gamma \proves A \to B$ and $\Delta \proves A$, then $\Gamma, \Delta \proves B$. & ($\to$ E) \\
-        If $\Gamma \proves A \iff B$, then $\Gamma \proves A \to B$. & ($\iff$ E) \\
-        If $\Gamma \proves A \to B$ and $\Gamma \proves B \to A$, then $\Gamma \proves A \iff B$. & ($\iff$ I)
-    \end{tabular}
-    \end{center}
+    $\bot$ is a formula. $\bot$ has no subformulas, is not atomic, and for all valuations $v$, $v(\bot) = \false$.
 \end{definition}
 
-The name of each rule is given in parentheses.
+Introducing $\bot$ to $\CPL$ is compatible with what we have done so far, other than requiring us to slightly revise our previous definitions of formula, subformula, atomic, and valuation, which we will not bother to do. $\bot$ can be thought of as a \textit{nullary} connective, i.e., one which connects no subformulas. ($\neg$ is a \textit{unary} connective and the others are \textit{binary}.) $\bot$ goes by various names, one of which is \textit{eet}.
+
+\begin{proposition}
+    $\bot$ is a contradiction.
+\end{proposition}
+
+\begin{proposition}
+    $A \to \bot$ is logically equivalent to $\neg A$.
+\end{proposition}
+
+(Add exercises here.)
+
+\pagebreak
+
+\subsection*{Natural Deduction Rules}
+
+The idea of a proof system is to define which \textit{conclusions} can be \textit{inferred} (or ``derived'', or ``proven'') from which \textit{premisses}.
+
+\begin{definition}
+    If there is a proof with premisses $\Gamma$ and conclusion $A$, we say $\Gamma$ \textit{proves} $A$ and write $\Gamma \vdash A$. 
+\end{definition}
+
+Now we must define what constitutes a proof. Essentially, it is a numbered list of formulas obeying certain rules, the last line of which is the conclusion.
+
+Each connective has an associated \textit{introduction} and \textit{elimination} rule:
+
+\begin{center}
+\begin{tabular}{| c | p{0.3\linewidth} | p{0.3\linewidth} |}
+    \hline
+    \textbf{Connective} & \textbf{Introduction Rule} & \textbf{Elimination Rule} \\ \hline
+    $\to$ & From a subproof of $B$ from the assumption $A$, infer $A \to B$. & From $A \to B$ and $A$, infer $B$. \\ \hline
+    $\iff$ & From $A \to B$ and $B \to A$, infer $A \iff B$. & $A \iff B$, infer $A \to B$ or $B \to A$. \\ \hline
+    $\neg$ & From a subproof of $\bot$ from the assumption $A$, infer
+    $\neg A$. & From $\neg \neg A$, infer $A$. \\ \hline
+    $\wedge$ & From $A$ and $B$, infer $A \wedge B$. &  From $A \wedge B$, infer $A$ or $B$. \\ \hline
+    $\vee$ & From $A$, infer $A \wedge B$. & From $A \wedge B$, $A \to C$, and $B \to C$, infer $C$. \\ \hline
+    $\bot$ & From $A$ and $\neg A$, infer $\bot$. & From $\bot$, infer $A$. \\ \hline
+\end{tabular}
+\end{center}
+
+Two more miscellaneous rules:
+\begin{align*}
+\textbf{Premiss}: \quad & \textrm{From nothing, infer a premiss } A. \\
+\textbf{Reiteration}: \quad  & \textrm{From } A \textrm{, infer } A \textrm{ in a lower level of subproof.} \\
+\textbf{Assumption}: \quad & \textrm{From nothing, begin a new subproof and infer } A. 
+\end{align*}
+
+Finally we need to explain \textit{subproofs}. At any point in a proof, we may assume a formula and thereby enter into a subproof. When one of the relevant introduction rules is invoked, the subproof ends and the assumption is \textit{discharged}, i.e., no longer assumed. A completed proof must have no undischarged assumptions.
+
+\subsection*{Example Proof}
+
+\begin{fitch}
+    \fh p \wedge q & premiss \\
+    \fa \fh p & assumption \\
+    \fa \fa p \wedge q & reiteration, 1 \\
+    \fa \fa q & $\wedge$-elimination, 3 \\
+    \fa p \to q & $\to$-introduction, 2-4 \\
+    \fa \fh q & assumption \\
+    \fa \fa p \wedge q & reiteration, 1 \\
+    \fa \fa p & $\wedge$-elimination, 7 \\
+    \fa q \to p & $\to$-introduction, 6-8 \\
+    \fa p \iff q & $\iff$-introduction, 5, 9
+\end{fitch}
+
+This proof shows that $p \wedge q \vdash p \iff q$. If lines 6--10 were omitted, it would show that $p \wedge q \vdash p \to q$. The indentation shows the level of subproof and the labels indicate how each line was obtained.
 
 \subsection*{Solving Liar Puzzles}
 
